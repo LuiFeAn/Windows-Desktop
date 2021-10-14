@@ -1,0 +1,113 @@
+body{
+    background: url("https://i.redd.it/oxbi9v49jea71.jpg");
+    background-size: cover;
+    user-select: none;
+    margin:0;
+    padding:0;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+body,html{
+    overflow-x:hidden;
+}
+.desktop-container{
+    width: 275px;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding-top: 10px;
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    display: none;
+    padding-left: 18px;
+    border-radius: 20px;
+}
+.desktop-container p{
+    cursor: pointer;
+    padding-left: 10px;
+}
+.desktop-container p:hover{
+    background-color: rgba(19, 11, 11, 0.5);
+    border-radius: 10px;
+    width: 265px;
+}
+.desktop-controller{
+    display:grid;
+    grid-template-columns: repeat(12,110px);
+    position: absolute;
+    margin:20px;
+    color: white;
+}
+.desktop-controller img{
+    width: 50px;
+    margin-left: 24px;
+    height: 50px;
+}
+.desktop-controller p{
+  inline-size: 100px;
+}
+.program{
+    display: grid;
+    width: 100px;
+    margin: 2px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.program p{
+    text-align: center;
+}
+.program input{
+    width: 95px;
+    height: 20px;
+    outline: none;
+    border: none;
+}
+.program:hover,.active-program{
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0.459);
+}
+.desktop-footer{
+    position: fixed;
+    width: 1350px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.61);
+    margin-top: 610px;
+    display: flex;
+    gap: 25px;
+    padding-left: 17px;
+}
+.desktop-footer img{
+    width: 35px;
+    height: 35px;
+    margin-top: 5px;
+}
+.desktop-footer input{
+   width: 380px;
+   background-color:rgba(27, 18, 18, 0.712);
+   border: none;
+   outline: none;
+   padding-left: 25px;
+   transition: 1s;
+}
+::-webkit-input-placeholder{
+    color: white;
+    padding-left: 25px;
+}
+#date-container{
+    position: absolute;
+    left: 1300px;
+    display: grid;
+}
+#hours-id,#date-id{
+    font-size: 15px;
+    color: white;
+}
+.drag-in-enter{
+    opacity: 30%;
+    transform: 1s;
+}
+.drag-in-end{
+    opacity: 100%;
+    position: absolute;
+}
