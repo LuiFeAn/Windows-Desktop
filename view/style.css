@@ -51,11 +51,11 @@ body,html{
     display: grid;
     width: 100px;
     margin: 2px;
-    padding-top: 10px;
     cursor: pointer;
 }
 .program p{
     text-align: center;
+    margin-top: 0.2cm;
 }
 .program input{
     width: 95px;
@@ -89,6 +89,7 @@ body,html{
    outline: none;
    padding-left: 25px;
    transition: 1s;
+   color: white;
 }
 ::-webkit-input-placeholder{
     color: white;

@@ -1,17 +1,20 @@
-	//Obtendo elementos
+
+//Obtendo elementos
 let desktop = document.querySelector(".desktop-controller");
 let windowsCon =  document.querySelector(".desktop-container");
 let windowOp = document.querySelectorAll(".op");
 
 window.onload = ()=>{
 windows(true);
-document.addEventListener("contextmenu",(event)=>event.preventDefault());
+document.addEventListener("contextmenu",(e)=>e.preventDefault());
 }
 
 //É o componente principal
 const windows = (Login = false)=>{
+	
 if(!!Login){
 const config = {
+
 //É responsável pela barra de configurações
 windowsBar: ()=>{
 	document.addEventListener("mouseup",(e)=>{
@@ -19,6 +22,9 @@ windowsBar: ()=>{
 			windowsCon.style.display = "block";
 			windowsCon.style.left = `${e.clientX}px`;
 			windowsCon.style.top = `${e.clientY}px`
+		}
+		else{
+			windowsCon.style.display = "none";
 		}
 	})
 	windowOp.forEach((op,id)=>{
@@ -36,6 +42,7 @@ windowsBar: ()=>{
 		})
 	})
 },
+
 programs:{
 	//Faz uma varredura no Array de programas
 	getPrograms:()=>{
@@ -50,10 +57,12 @@ programs:{
 	},
 	//Cria ''programas''
 	setPrograms:({t,n,i})=>{
+
 		let div = document.createElement("div");
 		div.classList.add("program");
 		desktop.appendChild(div);
 		let icon = document.createElement("img");
+
 		switch(t){
 		case "program":
 			let name = document.createElement("p");
@@ -62,11 +71,13 @@ programs:{
 			icon.setAttribute("src",i);
 			name.innerHTML = n;	
 			break;
+
 		case "folder":
+			const {icon:folderIcon} = folders[0];
 			let input = document.createElement("input");
 			div.appendChild(icon);
 			div.appendChild(input);
-			icon.setAttribute("src",folders[0].icon)
+			icon.setAttribute("src",folderIcon)
 			input.focus();
 			input.addEventListener("keypress",(e)=>{
 				if(e.keyCode == "13"){
@@ -75,17 +86,20 @@ programs:{
 					let name = document.createElement("p");
 					div.appendChild(name);
 					name.innerHTML = input.value;
+					programs.push({name:input.value,icon:folderIcon})
 				}
 			})
 			break;
 		}
 		
 	},
+
 	//Retorna todos os programas ''instalados''
 	allPrograms:()=>{
 		return programs.length;
 	}
 },
+
 //Define as horas
 hour: (h,m,d,me,a)=>{
 	let getHours = document.querySelector("#hours-id");
@@ -99,18 +113,19 @@ hour: (h,m,d,me,a)=>{
 	getHours.innerHTML = (m<10)? `${h}:0${m}` : `${h}:${m}`
 	getDate.innerHTML = `${d}/${me}/${a}`
 },
+
 //É responsável pelos eventos nos icones
 eventIcons: ()=>{
-	let programsArr = document.querySelectorAll(".program");
+	let progAr = document.querySelectorAll(".program");
 	const dragIconEnter = ()=>{
-		programsArr.forEach((prog)=>{
+		progAr.forEach((prog)=>{
 			prog.addEventListener("dragenter",(e)=>{
 				prog.classList.add("drag-in-enter");
 			})
 		})
 	}
 	const dragIconLeave = ()=>{
-		programsArr.forEach((prog)=>{
+		progAr.forEach((prog)=>{
 			prog.addEventListener("dragend",(e)=>{
 				prog.classList.remove("drag-in-enter")
 				prog.classList.add("drag-in-end");
@@ -122,19 +137,21 @@ eventIcons: ()=>{
 	dragIconEnter();
 	dragIconLeave();
 },
+
 //Define as configurações do Desktop
-desktopConfig: (inputcolor = "white")=>{
-	const  Input = ()=>{
-		let gtInput = document.querySelector("input");
-		gtInput.addEventListener("click",()=>{
-			gtInput.style.backgroundColor = inputColor;
+deskTop: {
+	DefaultConfig: ()=>{
+		let gtInput = document.querySelector(".desktop-footer input");
+		gtInput.addEventListener("click",(e)=>{
+			gtInput.style.backgroundColor = "grey";
 		})
-		Input();
 	}
-},
 }
+}
+
 config.windowsBar();
 config.programs.getPrograms();
+config.deskTop.DefaultConfig();
 //Executa a cada 1s
 setInterval(() => {
 config.hour();
