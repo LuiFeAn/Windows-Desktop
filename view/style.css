@@ -96,9 +96,9 @@ body,html{
     padding-left: 25px;
 }
 #date-container{
-    position: absolute;
-    left: 1300px;
-    display: grid;
+    margin-left: 50%;
+    display: flex;
+    gap: 25px;
 }
 #hours-id,#date-id{
     font-size: 15px;

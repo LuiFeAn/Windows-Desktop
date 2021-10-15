@@ -107,10 +107,10 @@ hour: (h,m,d,me,a)=>{
 	let date = new Date();
 	h = date.getHours();
 	m = date.getMinutes();
-	d = date.getDay();
-	me = date.getMonth();
+	d = date.getDate();
+	me = date.getMonth()+1;
 	a = date.getFullYear();
-	getHours.innerHTML = (m<10)? `${h}:0${m}` : `${h}:${m}`
+	getHours.innerHTML = `${h}:${m}`
 	getDate.innerHTML = `${d}/${me}/${a}`
 },
 
